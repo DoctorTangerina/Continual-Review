@@ -6,9 +6,11 @@
   "agent_command_timeout_seconds": 120,
   "agent_observation_max_chars": 4000,
   "agent_oracle_paths": false,
-  "swebench_root": "../../../../SWE-bench",
+  "swebench_root": "../../SWE-bench",
   "swebench_tasks": null,
-  "swebench_python": ["/home/doctortangerina/puc/SWE-bench/.venv/bin/python"],
+  "swebench_python": [
+    "/home/doctortangerina/puc/SWE-bench/.venv/bin/python"
+  ],
   "swebench_dataset": "SWE-bench/SWE-bench_Lite",
   "swebench_split": "test",
   "swebench_eval_timeout_seconds": 1800,
