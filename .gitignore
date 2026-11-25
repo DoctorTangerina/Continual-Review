@@ -4,3 +4,6 @@ runs/
 *.egg-info/
 __pycache__/
 *.pyc
+*full.json
+*local.json
+*nvidia.json
