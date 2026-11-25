@@ -12,8 +12,12 @@
 #   3. configs/swebench.local.json: created from the example, or its swebench_root and
 #      swebench_python repointed when they do not reach the checkout.
 #   4. Checks: Docker, Ollama and the model, .env; then the offline tests and `doctor`.
+#      With an Ollama model on this machine, starts `ollama serve` in the background if it is
+#      not running (log in cache/ollama-serve.log).
 #
 # Overrides (environment):
+#   OLLAMA_NUM_PARALLEL  slots of an Ollama server started here (default 1); run.sh --workers N
+#                  needs at least N, but more than 1 makes answers vary between runs (docs/PROTOCOL.md)
 #   PYTHON         interpreter used to create .venv (default: first python3.1x >= 3.12 on PATH)
 #   SWEBENCH_ROOT  SWE-bench checkout (default ../SWE-bench); also read by experiment.py itself
 #   CONFIG         configuration to create/check (default configs/swebench.local.json)
@@ -149,7 +153,9 @@ if not current or (base / current).resolve() != root.resolve():
 
 cmd = cfg.get("swebench_python")
 cmd = [cmd] if isinstance(cmd, str) else cmd
-if not cmd or not Path(cmd[-1]).exists() and not cmd[0].endswith(".exe"):
+# Always the Python of the checkout set up above, so swebench_python and swebench_root agree on
+# any machine. A Windows wrapper (["wsl.exe", ..., "/path/python"]) is left as the user wrote it.
+if not (cmd and cmd[0].endswith(".exe")) and cmd != [python]:
     cfg["swebench_python"] = [python]
     changes.append(f"swebench_python: {cmd!r} -> {[python]!r}")
 
@@ -187,14 +193,40 @@ case $MODEL in
     ollama/*|ollama_chat/*)
         step "Ollama ($MODEL)"
         NAME=${MODEL#*/}
+        HOSTPORT=${API#*://}; HOSTPORT=${HOSTPORT%%/*}      # api_base -> host:port, for OLLAMA_HOST
         if ! command -v ollama >/dev/null; then
             warn "ollama is not installed (https://ollama.com/download)"
-        elif ! curl -sf "$API/api/tags" >/dev/null; then
-            warn "no Ollama server at $API (sudo systemctl start ollama, or: OLLAMA_NUM_PARALLEL=1 ollama serve)"
+        elif curl -sf "$API/api/tags" >/dev/null; then
+            ok "server already running at $API (its OLLAMA_NUM_PARALLEL is whatever it was started with)"
+        elif [[ ! ${HOSTPORT%:*} =~ ^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$ ]]; then
+            warn "no Ollama server at $API, and it is not on this machine, so it cannot be started here"
+        else
+            # As the current user, like a plain `ollama serve`: it uses this user's models (~/.ollama).
+            # setsid + nohup: it keeps running after this script and the terminal end.
+            mkdir -p cache
+            OLLAMA_LOG=$PROJECT/cache/ollama-serve.log
+            OLLAMA_HOST=$HOSTPORT OLLAMA_NUM_PARALLEL=${OLLAMA_NUM_PARALLEL:-1} \
+                setsid nohup ollama serve >>"$OLLAMA_LOG" 2>&1 </dev/null &
+            OLLAMA_PID=$!
+            for _ in $(seq 30); do
+                curl -sf "$API/api/tags" >/dev/null && break
+                kill -0 "$OLLAMA_PID" 2>/dev/null || break
+                sleep 1
+            done
+            if curl -sf "$API/api/tags" >/dev/null; then
+                ok "started ollama serve in the background at $API (pid $OLLAMA_PID, OLLAMA_NUM_PARALLEL=${OLLAMA_NUM_PARALLEL:-1})"
+                ok "log: $OLLAMA_LOG; stop it with: kill $OLLAMA_PID"
+            else
+                warn "ollama serve did not start; last lines of $OLLAMA_LOG:"
+                tail -n 5 "$OLLAMA_LOG" | sed 's/^/          /'
+            fi
+        fi
+        if ! command -v ollama >/dev/null || ! curl -sf "$API/api/tags" >/dev/null; then
+            :   # already reported above
         elif curl -sf "$API/api/tags" | .venv/bin/python -c 'import json,sys; m=sys.argv[1]; n={x["name"] for x in json.load(sys.stdin)["models"]}; sys.exit(0 if m in n or m+":latest" in n else 1)' "$NAME"; then
-            ok "server at $API, $NAME pulled"
+            ok "$NAME pulled"
         elif [ "$PULL_MODEL" = 1 ]; then
-            ollama pull "$NAME" && ok "$NAME pulled"
+            OLLAMA_HOST=$HOSTPORT ollama pull "$NAME" && ok "$NAME pulled"
         else
             warn "$NAME is not pulled yet (ollama pull $NAME, or ./setup.sh --pull-model)"
         fi

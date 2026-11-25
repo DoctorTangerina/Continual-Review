@@ -9,7 +9,7 @@
 #
 # Options:
 #   --config FILE       configuration for a new run (default configs/swebench.local.json)
-#   --assignments FILE  case assignments for a new run (default manifests/swebench_pilot.csv)
+#   --assignments FILE  case assignments for a new run (default manifests/swebench_catalog.csv)
 #   --workers N         cases of a stage in progress at once (default 1); with a local model
 #                       the Ollama server needs OLLAMA_NUM_PARALLEL of at least N
 #   --retry-failed      passed on to `experiment.py run`; each retried stage uses a call of the budget
@@ -24,7 +24,7 @@ set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
 
 CONFIG=${CONFIG:-configs/swebench.local.json}
-ASSIGNMENTS=${ASSIGNMENTS:-manifests/swebench_pilot.csv}
+ASSIGNMENTS=${ASSIGNMENTS:-manifests/swebench_catalog.csv}
 WORKERS=${WORKERS:-1}
 RETRY=()
 NEW=0
@@ -170,7 +170,7 @@ else
     [ -f "$CONFIG" ] || report "prepare" "configuration $CONFIG does not exist" \
         "Create it with ./setup.sh, or pass --config FILE"
     [ -f "$ASSIGNMENTS" ] || report "prepare" "assignments $ASSIGNMENTS do not exist" \
-        "Copy manifests/swebench_catalog.csv, fill role/block (README section 3), or pass --assignments FILE"
+        "Export it with: $PYTHON experiment.py --config $CONFIG catalog --output $ASSIGNMENTS"$'\n'"then fill role/block (README section 3), or pass --assignments FILE"
     say "Preparing $RUN_DIR (config $CONFIG, assignments $ASSIGNMENTS)"
     step "prepare" "$PYTHON" experiment.py --config "$CONFIG" prepare --assignments "$ASSIGNMENTS" --run-dir "$RUN_DIR"
 fi
