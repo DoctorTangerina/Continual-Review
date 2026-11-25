@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-26",
+  "files": [
+    {
+      "file": "Experiments\\continual_review\\docs\\TODO_IST_IA_Arthur_Sardella_2026-10-19.md",
+      "sha256": "0880ddbe6055693389f61f6a99f6872e4f2f5d31981005f4097034753064c077"
+    },
+    {
+      "file": "Experiments\\continual_review\\docs\\referencias_lifelong_learning.bib",
+      "sha256": "33b8b14f7da3a9ff6e0e3dfffb203c4740f8021be8afed2ba3b8c66b652bb0ee"
+    },
+    {
+      "file": "__Support\\Arthur - Artigo base.pdf",
+      "sha256": "544ff8217e0b6f3cb1439c3a306f2d2819de59a224b72f9b0afa3d927238437a"
+    }
+  ],
+  "subnote": "Notes\\Experiments\\Prova de conceito - Experience Factory e Lifelong Learning com c-CRAB.md",
+  "subnote_original_sha256": "1add85724d41c2fd69f448849e2a141d7f76b9a5f600ae3846991cf2f303f058",
+  "subnote_adjustments": [
+    "Parent links point to local project map",
+    "Implementation-status callout added"
+  ]
+}

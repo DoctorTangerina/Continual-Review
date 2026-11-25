@@ -1,0 +1,7 @@
+instance_id,role,block,family
+pallets__flask-4045,warmup,,web
+pallets__flask-4992,warmup,,web
+pallets__flask-5063,warmup,,web
+pydata__xarray-3364,warmup,,scientific
+django__django-11099,adapt,1,trial
+astropy__astropy-14182,eval,,trial

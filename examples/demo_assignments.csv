@@ -1,0 +1,8 @@
+instance_id,role,block,family
+demo-warmup-alpha@1,warmup,,alpha
+demo-adapt-alpha@1,adapt,1,alpha
+demo-adapt-beta@1,adapt,2,beta
+demo-adapt-gamma@1,adapt,3,gamma
+demo-eval-alpha@1,eval,,alpha
+demo-eval-beta@1,eval,,beta
+demo-eval-gamma@1,eval,,gamma

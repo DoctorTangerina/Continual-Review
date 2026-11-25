@@ -1,0 +1,10 @@
+{
+  "instance_id": "demo-adapt-beta@1",
+  "base_commit": "0000000000000000000000000000000000000000",
+  "files": [
+    {
+      "path": "demo.py",
+      "content": "\"\"\"Synthetic demo fixture; not real code.\"\"\"\nMARKER = \"DEMO_BETA\"\nFIXED = False\n"
+    }
+  ]
+}

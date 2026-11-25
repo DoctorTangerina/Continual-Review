@@ -1,0 +1,4 @@
+instance_id,role,block,family
+sympy__sympy-20590,warmup,,smoke
+django__django-11099,adapt,1,smoke
+astropy__astropy-14182,eval,,smoke

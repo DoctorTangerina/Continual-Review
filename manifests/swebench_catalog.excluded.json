@@ -1,0 +1,128 @@
+[
+  {
+    "instance_id": "astropy__astropy-7746",
+    "reason": "Review prompt does not fit review_num_ctx: 32965 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 32965,
+    "role": "eval"
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-22711",
+    "reason": "Review prompt does not fit review_num_ctx: 37576 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 37576,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23314",
+    "reason": "Review prompt does not fit review_num_ctx: 33353 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 33353,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23476",
+    "reason": "Review prompt does not fit review_num_ctx: 33034 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 33034,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23987",
+    "reason": "Review prompt does not fit review_num_ctx: 32848 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 32848,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-24149",
+    "reason": "Review prompt does not fit review_num_ctx: 83223 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 83223,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25433",
+    "reason": "Review prompt does not fit review_num_ctx: 33795 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 33795,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "pydata__xarray-4094",
+    "reason": "Review prompt does not fit review_num_ctx: 37366 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 37366,
+    "role": "warmup"
+  },
+  {
+    "instance_id": "sympy__sympy-12454",
+    "reason": "Review prompt does not fit review_num_ctx: 50072 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 50072,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-13471",
+    "reason": "Review prompt does not fit review_num_ctx: 33443 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 33443,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-13895",
+    "reason": "Review prompt does not fit review_num_ctx: 33218 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 33218,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-14024",
+    "reason": "Review prompt does not fit review_num_ctx: 33306 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 33306,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-18057",
+    "reason": "Review prompt does not fit review_num_ctx: 37571 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 37571,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-18189",
+    "reason": "Review prompt does not fit review_num_ctx: 35463 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 35463,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-18698",
+    "reason": "Review prompt does not fit review_num_ctx: 58758 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 58758,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-21171",
+    "reason": "Review prompt does not fit review_num_ctx: 36892 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 36892,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-21614",
+    "reason": "Review prompt does not fit review_num_ctx: 31660 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 31660,
+    "role": "adapt"
+  },
+  {
+    "instance_id": "sympy__sympy-23191",
+    "reason": "Review prompt does not fit review_num_ctx: 29678 prompt tokens + 2000 memory reserve + 2000 output > 32768 (ollama_chat/qwen2.5-coder:14b)",
+    "kind": "context_window",
+    "prompt_tokens": 29678,
+    "role": "adapt"
+  }
+]

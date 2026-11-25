@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ef-continual-review"
+version = "0.1.0"
+description = "Sequential external-memory experiment on SWE-bench issue resolution with a frozen-weight model"
+requires-python = ">=3.12"
+# The agent solver's loop and prompt templates; the exact version is part of a run's record.
+dependencies = ["mini-swe-agent==2.4.6"]
+
+[project.optional-dependencies]
+# LiteLLM already arrives with mini-swe-agent; the extra is kept so documented commands still work.
+live = ["litellm>=1.75.5,<2"]
+
+[project.scripts]
+ef-review = "ef_review.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

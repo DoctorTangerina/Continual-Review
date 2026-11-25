@@ -1,0 +1,10 @@
+{
+  "instance_id": "demo-warmup-alpha@1",
+  "base_commit": "0000000000000000000000000000000000000000",
+  "files": [
+    {
+      "path": "demo.py",
+      "content": "\"\"\"Synthetic demo fixture; not real code.\"\"\"\nMARKER = \"DEMO_ALPHA\"\nFIXED = False\n"
+    }
+  ]
+}
